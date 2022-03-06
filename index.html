@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Films Rating</title>
+
+        <link rel="stylesheet" type="text/css" href="normalize.css" />
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet" />
+        <script defer src="./js/script.js"></script>
+    </head>
+    <body>
+        <div class="form-div">
+            <form action="">
+                <li>
+                    <label>Название:</label>
+                    <input type="text" id="name" required placeholder="Введи название фильма" />
+                </li>
+                <li>
+                    <label>Добавить в :</label>
+                    <select class="select-css" id="list">
+                        <option value="Добавить в :">Добавить в :</option>
+                        <option value="Понравившиеся">Понравившиеся</option>
+                        <option value="Хочу посмотреть">Хочу посмотреть</option>
+                    </select>
+                </li>
+                <li>
+                    <label>Моя оценка:</label>
+                    <select class="select-css" id="rate">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+                </li>
+                <li>
+                    <label>Фильтр</label>
+                    <select class="select-css" id="filter">
+                        <option value="filter-default">Выберите фильтр: </option>
+                        <option value="liked">Понравившиеся</option>
+                        <option value="wantToWatch">Хочу посмотреть</option>
+                        <option value="all">Все</option>
+                    </select>
+                </li>
+            </form>
+        </div>
+        <div class="button-div">
+            <button class="save-button" id="save-button">Save</button>
+        </div>
+
+        <div class="table-wrapper">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Название</th>
+                        <th>Список</th>
+                        <th>Оценка</th>
+                        <th>Удалить из списка</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+                    <!-- <tr id="tr">
+                        <td>Начало</td>
+                        <td>Понравившиеся</td>
+                        <td>5</td>
+                        <td class="last">Удалить</td>
+                    </tr> -->
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
