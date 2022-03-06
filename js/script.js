@@ -4,6 +4,7 @@ let nameValue;
 let listValue;
 let rateValue;
 let id = 0;
+let counter = 0;
 
 let nameSelect = document.getElementById("name");
 let listSelect = document.getElementById("list");
@@ -17,7 +18,37 @@ let deleteButtonValue = "Удалить";
 
 let tbody = document.getElementById("tbody");
 
+let data = JSON.parse(localStorage.getItem("data")) ? JSON.parse(localStorage.getItem("data")) : [];
+
+const start = () => {
+    data.forEach((item) => {
+        nameValue = item.name;
+        listValue = item.list;
+        rateValue = item.rating;
+
+        let newItem = document.createElement("tr");
+        // if (nameValue.length < 1 || listSelect.selectedIndex == 0 || rateSelect.selectedIndex == 0) {
+        //     alert("Введите все необходимые данные!");
+        // }
+
+        if (item.list == 1) {
+            newItem.id = `a${id++}`;
+            newItem.className = "new";
+            newItem.innerHTML = `<td>${nameValue}</td><td class='like'>Понравившиеся</td><td>${rateValue}</td><td id=b${newItem.id} class="last">${deleteButtonValue}</td>`;
+            tbody.append(newItem);
+        } else if (item.list == 2) {
+            newItem.id = `a${id++}`;
+            newItem.className = "new";
+            newItem.innerHTML = `<td>${nameValue}</td><td class='toWatch'>Хочу посмотреть</td><td>${rateValue}</td><td id=b${newItem.id} class="last">${deleteButtonValue}</td>`;
+            tbody.append(newItem);
+        }
+    });
+};
+start();
+
 const formFiller = () => {
+    console.log(data);
+
     nameValue = document.getElementById("name").value;
     listValue = document.getElementById("list").value;
     rateValue = document.getElementById("rate").value;
@@ -38,6 +69,19 @@ const formFiller = () => {
         newItem.innerHTML = `<td>${nameValue}</td><td class='toWatch'>Хочу посмотреть</td><td>${rateValue}</td><td id=b${newItem.id} class="last">${deleteButtonValue}</td>`;
         tbody.append(newItem);
     }
+
+    // counter++;
+
+    let newFilm = {
+        name: nameValue,
+        rating: rateValue,
+        list: listSelect.selectedIndex,
+    };
+
+    data.push(newFilm);
+
+    localStorage.setItem("data", JSON.stringify(data));
+    // localStorage.setItem(`name`, newFilm);
 
     nameSelect.value = "";
     listSelect.selectedIndex = 0;
